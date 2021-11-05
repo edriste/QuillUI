@@ -1,1 +1,1 @@
-# QuillUI
+QuillUI is a simple collection of React-Tsx UI-components - for your convenience!
