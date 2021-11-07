@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import quillUIIcon from "./assets/icons/Quill.svg";
-import Image from "./components/Image";
-import Text from "./components/Text";
+import {Image, Text, Link} from "./components";
 import { FontSizes } from "./enums";
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
         solution for all those who<br></br>value both minimalism and elegance.
       </Text>
       <Text fontSize={FontSizes.Large} textAlign="center">
-        Find QuillUI on <a href="https://github.com/edriste/QuillUI">Github</a>
+        Find QuillUI on <Link source="https://github.com/edriste/QuillUI">GitHub</Link>
       </Text>
     </div>
   );
