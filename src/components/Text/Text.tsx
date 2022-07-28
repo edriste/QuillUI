@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Colors, FontSizes} from "../../enums"
-
+import { Colors, FontSizes } from "../../enums/enums";
 
 interface TextProps {
   type?: "header" | "subHeader" | "subSubHeader" | "normal";
@@ -9,7 +8,7 @@ interface TextProps {
   color?: Colors;
   transform?: "lowercase" | "normal" | "uppercase";
   weight?: "normal" | "bold";
-  textAlign?: 'left' | 'center' | 'right' | 'justified'
+  textAlign?: "left" | "center" | "right" | "justified";
 }
 
 const Text: React.FC<TextProps> = ({
@@ -46,6 +45,7 @@ const Text: React.FC<TextProps> = ({
     font-size: ${fontSize ?? FontSizes.Large};
     font-weight: ${weight ?? "bold"};
   `;
+
   switch (type) {
     case "header":
       return <Header>{children}</Header>;
