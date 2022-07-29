@@ -17,6 +17,7 @@ const Code: React.FC<CodeProps> = ({
   borderStyle,
   borderWidth,
   content,
+  display,
   codeLineColor = Colors.White,
   lineIndexColor = Colors.Gray6,
   lineIndexSeparatorColor = Colors.Gray6,
@@ -68,6 +69,7 @@ const Code: React.FC<CodeProps> = ({
     orientation === "center" ? 50 : orientation === "right" ? 100 : 0;
 
   const CodeBox = styled.div`
+    display: ${display};
     background-color: ${backgroundColor};
     border-style: ${borderStyle};
     border-color: ${borderColor};

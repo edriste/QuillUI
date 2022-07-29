@@ -14,6 +14,7 @@ const Image: React.FC<ImageProps> = ({
   borderRadius,
   borderStyle,
   borderWidth = "1px",
+  display,
   height,
   marginBottom,
   marginLeft,
@@ -31,6 +32,7 @@ const Image: React.FC<ImageProps> = ({
     orientation === "center" ? 50 : orientation === "right" ? 100 : 0;
 
   const Img = styled.img`
+    display: ${display};
     position: relative;
     background-color: ${backgroundColor};
     border-color: ${borderColor};

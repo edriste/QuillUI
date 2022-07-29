@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Colors } from "../../enums/enums";
 
 export interface ContainerProps {
+  display?: string;
   width?: string;
   height?: string;
   borderStyle?:
@@ -33,6 +34,7 @@ export interface ContainerProps {
 }
 
 const Container: React.FC<ContainerProps> = ({
+  display,
   backgroundColor,
   borderColor,
   borderRadius = "8px",
@@ -55,6 +57,7 @@ const Container: React.FC<ContainerProps> = ({
     orientation === "center" ? 50 : orientation === "right" ? 100 : 0;
 
   const ContainerDiv = styled.div`
+    display: ${display};
     position: relative;
     background-color: ${backgroundColor};
     border-color: ${borderColor};
