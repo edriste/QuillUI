@@ -25,7 +25,10 @@ const Code: React.FC<CodeProps> = ({
   marginRight,
   marginTop,
   orientation = "center",
-  padding = "10px",
+  paddingBottom = "10px",
+  paddingLeft = "10px",
+  paddingRight = "10px",
+  paddingTop = "10px",
   width,
 }) => {
   let initialIndent = 0;
@@ -72,7 +75,10 @@ const Code: React.FC<CodeProps> = ({
     border-radius: ${borderRadius};
     position: relative;
     width: ${width};
-    padding: ${padding};
+    padding-bottom: ${paddingBottom};
+    padding-left: ${paddingLeft};
+    padding-right: ${paddingRight};
+    padding-top: ${paddingTop};
     margin-bottom: ${marginBottom};
     margin-left: ${marginLeft};
     margin-right: ${marginRight};

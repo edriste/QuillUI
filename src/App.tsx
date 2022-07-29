@@ -35,7 +35,7 @@ function App() {
         <Text type="subHeader" textAlign="left">
           Content
         </Text>
-        <Container padding="0" marginLeft="20px">
+        <Container paddingTop="1px" paddingBottom="1px" marginLeft="15px">
           <Text type="subSubHeader" textAlign="left">
             Code
           </Text>

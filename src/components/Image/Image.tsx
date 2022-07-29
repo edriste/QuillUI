@@ -20,7 +20,10 @@ const Image: React.FC<ImageProps> = ({
   marginRight,
   marginTop,
   orientation = "center",
-  padding,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
   source,
   width,
 }) => {
@@ -39,7 +42,10 @@ const Image: React.FC<ImageProps> = ({
     margin-left: ${marginLeft};
     margin-right: ${marginRight};
     margin-top: ${marginTop};
-    padding: ${padding};
+    padding-bottom: ${paddingBottom};
+    padding-left: ${paddingLeft};
+    padding-right: ${paddingRight};
+    padding-top: ${paddingTop};
     width: ${width};
     left: ${left}%;
     transform: translateX(-${left}%);

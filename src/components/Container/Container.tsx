@@ -26,6 +26,10 @@ export interface ContainerProps {
   marginRight?: string;
   marginTop?: string;
   orientation?: "left" | "center" | "right";
+  paddingBottom?: string;
+  paddingLeft?: string;
+  paddingRight?: string;
+  paddingTop?: string;
 }
 
 const Container: React.FC<ContainerProps> = ({
@@ -41,7 +45,10 @@ const Container: React.FC<ContainerProps> = ({
   marginRight,
   marginTop,
   orientation = "center",
-  padding = "10px",
+  paddingBottom = "10px",
+  paddingLeft = "10px",
+  paddingRight = "10px",
+  paddingTop = "10px",
   width,
 }) => {
   const left =
@@ -59,7 +66,10 @@ const Container: React.FC<ContainerProps> = ({
     margin-left: ${marginLeft};
     margin-right: ${marginRight};
     margin-top: ${marginTop};
-    padding: ${padding};
+    padding-bottom: ${paddingBottom};
+    padding-left: ${paddingLeft};
+    padding-right: ${paddingRight};
+    padding-top: ${paddingTop};
     width: ${width};
     left: ${left}%;
     transform: translateX(-${left}%);
