@@ -84,57 +84,63 @@ function App() {
         <Text type="subHeader" textAlign="left">
           Interactive Elements
         </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Button
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Checkbox
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Dropdown
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Input
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Link
-        </Text>
-        <Link source="https://github.com/edriste/QuillUI">This is a Link</Link>
-        <Text type="subSubHeader" textAlign="left">
-          Modal
-        </Text>
+        <Container paddingTop="1px" paddingBottom="1px" marginLeft="15px">
+          <Text type="subSubHeader" textAlign="left">
+            Button
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Checkbox
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Dropdown
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Input
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Link
+          </Text>
+          <Link source="https://github.com/edriste/QuillUI">
+            This is a Link
+          </Link>
+          <Text type="subSubHeader" textAlign="left">
+            Modal
+          </Text>
+        </Container>
         <Text type="subHeader" textAlign="left">
           Layout &amp; Navigation
         </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Accordion
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Breadcrumb
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          &#9;Container
-        </Text>
-        <Container
-          borderStyle="solid"
-          borderWidth="1px"
-          borderColor={Colors.Gray6}
-          orientation="left"
-        >
-          This is a container
+        <Container paddingTop="1px" paddingBottom="1px" marginLeft="15px">
+          <Text type="subSubHeader" textAlign="left">
+            Accordion
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Breadcrumb
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            &#9;Container
+          </Text>
+          <Container
+            borderStyle="solid"
+            borderWidth="1px"
+            borderColor={Colors.Gray6}
+            orientation="left"
+          >
+            This is a container
+          </Container>
+          <Text type="subSubHeader" textAlign="left">
+            Menu
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Menu Item
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Tab Menu
+          </Text>
+          <Text type="subSubHeader" textAlign="left">
+            Tab
+          </Text>
         </Container>
-        <Text type="subSubHeader" textAlign="left">
-          Menu
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Menu Item
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Tab Menu
-        </Text>
-        <Text type="subSubHeader" textAlign="left">
-          Tab
-        </Text>
       </Container>
     </div>
   );
