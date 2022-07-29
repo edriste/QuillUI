@@ -7,6 +7,7 @@ interface CodeProps extends ContainerProps {
   lineIndexColor?: Colors;
   lineIndexSeparatorColor?: Colors;
   codeLineColor?: Colors;
+  content: string;
 }
 
 const Code: React.FC<CodeProps> = ({
@@ -15,7 +16,7 @@ const Code: React.FC<CodeProps> = ({
   borderRadius = "8px",
   borderStyle,
   borderWidth,
-  children,
+  content,
   codeLineColor = Colors.White,
   lineIndexColor = Colors.Gray6,
   lineIndexSeparatorColor = Colors.Gray6,
@@ -27,9 +28,27 @@ const Code: React.FC<CodeProps> = ({
   padding = "10px",
   width,
 }) => {
-  console.log(children?.toString());
-  const codeArray = children
-    ?.toString()
+  let initialIndent = 0;
+  const trimmedContent = content.trim();
+
+  for (
+    let i = 0;
+    i < content.length && content.charAt(i) !== trimmedContent.charAt(0);
+    i++
+  ) {
+    if (content.substring(i, i + 1) === " ") {
+      initialIndent++;
+    }
+  }
+
+  let initialTabCheckString = "";
+  for (let j = 0; j < initialIndent; j++) {
+    initialTabCheckString += " ";
+  }
+
+  const codeArray = content
+    .trim()
+    .replaceAll(initialTabCheckString, "")
     .replaceAll(",\t", "\t")
     .replaceAll("\t,", "\t")
     .replaceAll("\t", "   ")
@@ -44,8 +63,6 @@ const Code: React.FC<CodeProps> = ({
 
   const left =
     orientation === "center" ? 50 : orientation === "right" ? 100 : 0;
-
-  console.log(codeArray);
 
   const CodeBox = styled.div`
     background-color: ${backgroundColor};

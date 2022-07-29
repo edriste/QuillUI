@@ -39,15 +39,17 @@ function App() {
           <Text type="subSubHeader" textAlign="left">
             Code
           </Text>
-          <Code>
-            console.log('Hello world');{"\n"}
-            {"\n"}
-            for(let i = 0; i &lt;= 10; i++) &#123;{"\n"}
-            {"\t"}console.log(i);{"\n"}
-            &#125;{"\n"}
-            {"\n"}
-            console.log('This is a code block');
-          </Code>
+          <Code
+            content={`
+              console.log(Hello World!);
+
+              for(let i = 0; i <= 10; i++){
+                console.log(i);
+              }
+
+              console.log("Done!")
+            `}
+          />
           <Text type="subSubHeader" textAlign="left">
             Image
           </Text>
