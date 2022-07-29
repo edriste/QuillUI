@@ -1,30 +1,67 @@
-import React, { ReactChild, ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Colors } from "../../enums/enums";
+import { ContainerProps } from "../Container/Container";
 
-interface CodeProps {
-  width?: string | number;
-  orientation?: "left" | "center" | "right";
+interface CodeProps extends ContainerProps {
+  lineIndexColor?: Colors;
+  lineIndexSeparatorColor?: Colors;
+  codeLineColor?: Colors;
 }
 
-const Code: React.FC<CodeProps> = (props) => {
-  const codeArray = props.children?.toString().split("\n");
+const Code: React.FC<CodeProps> = ({
+  backgroundColor = Colors.Gray2,
+  borderColor,
+  borderRadius = "8px",
+  borderStyle,
+  borderWidth,
+  children,
+  codeLineColor = Colors.White,
+  lineIndexColor = Colors.Gray6,
+  lineIndexSeparatorColor = Colors.Gray6,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  orientation = "center",
+  padding = "10px",
+  width,
+}) => {
+  console.log(children?.toString());
+  const codeArray = children
+    ?.toString()
+    .replaceAll(",\t", "\t")
+    .replaceAll("\t,", "\t")
+    .replaceAll("\t", "   ")
+    .replaceAll(",\n", "\n")
+    .replaceAll("\n,", "\n")
+    .split("\n");
+
+  const codeArrayLengthDigits = codeArray
+    ? codeArray.length.toString().length
+    : 1;
+  const codeLineIndexWidth = 10 + 7 * codeArrayLengthDigits;
 
   const left =
-    props.orientation === "center"
-      ? 50
-      : props.orientation === "right"
-      ? 100
-      : 0;
+    orientation === "center" ? 50 : orientation === "right" ? 100 : 0;
+
+  console.log(codeArray);
 
   const CodeBox = styled.div`
-    background-color: ${Colors.Gray2};
-    border-radius: 2px;
+    background-color: ${backgroundColor};
+    border-style: ${borderStyle};
+    border-color: ${borderColor};
+    border-width: ${borderWidth};
+    border-radius: ${borderRadius};
     position: relative;
-    width: ${props.width}%;
-    padding: 10px;
+    width: ${width};
+    padding: ${padding};
+    margin-bottom: ${marginBottom};
+    margin-left: ${marginLeft};
+    margin-right: ${marginRight};
+    margin-top: ${marginTop};
     left: ${left}%;
-    transform: translateX(-50%);
+    transform: translateX(-${left}%);
   `;
 
   const CodeLine = styled.div`
@@ -37,26 +74,32 @@ const Code: React.FC<CodeProps> = (props) => {
   `;
 
   const CodeLineIndex = styled.span`
-    flex: 0 0 ${20 * (codeArray ? codeArray.length.toString().length : 1)}px;
-    color: ${Colors.Gray7};
-    border-right: 1px solid ${Colors.Gray7};
+    flex: 0 0 ${codeLineIndexWidth}px;
+    color: ${lineIndexColor};
+    border-right: 1px solid ${lineIndexSeparatorColor};
   `;
 
   const CodeLineContent = styled.span`
-    flex: 0 0 calc(100% - 41px);
-    color: ${Colors.White};
+    flex: 0 0 calc(100% - ${codeLineIndexWidth + 11}px);
+    color: ${codeLineColor};
+  `;
+
+  const Pre = styled.pre`
+    margin: 0;
   `;
 
   return (
     <CodeBox>
-      {codeArray?.map((codeLine, i) => {
-        return (
-          <CodeLine>
-            <CodeLineIndex>{i + 1}</CodeLineIndex>
-            <CodeLineContent>{codeLine}</CodeLineContent>
-          </CodeLine>
-        );
-      })}
+      {codeArray?.map((codeLine, i) => (
+        <CodeLine>
+          <CodeLineIndex>
+            <Pre>{i + 1}</Pre>
+          </CodeLineIndex>
+          <CodeLineContent>
+            <Pre>{codeLine}</Pre>
+          </CodeLineContent>
+        </CodeLine>
+      ))}
     </CodeBox>
   );
 };

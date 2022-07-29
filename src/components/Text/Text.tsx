@@ -1,23 +1,25 @@
-import React from "react";
+import React, { Children } from "react";
 import styled from "styled-components";
 import { Colors, FontSizes } from "../../enums/enums";
 
 interface TextProps {
-  type?: "header" | "subHeader" | "subSubHeader" | "normal";
-  fontSize?: FontSizes;
   color?: Colors;
-  transform?: "lowercase" | "normal" | "uppercase";
-  weight?: "normal" | "bold";
+  fontSize?: FontSizes;
+  horizontalLayer?: number;
   textAlign?: "left" | "center" | "right" | "justified";
+  transform?: "lowercase" | "normal" | "uppercase";
+  type?: "header" | "subHeader" | "subSubHeader" | "normal";
+  weight?: "normal" | "bold";
 }
 
 const Text: React.FC<TextProps> = ({
-  type,
-  fontSize,
   color,
-  transform,
-  weight,
+  fontSize,
+  horizontalLayer = 0,
   textAlign,
+  transform,
+  type,
+  weight,
   children,
 }) => {
   const Paragraph = styled.p`
@@ -27,6 +29,7 @@ const Text: React.FC<TextProps> = ({
     font-size: ${fontSize ?? "13px"};
     text-align: ${textAlign ?? "left"};
     text-transform: ${transform ?? "none"};
+    margin-left: ${horizontalLayer}em;
   `;
 
   const Header = styled(Paragraph)`

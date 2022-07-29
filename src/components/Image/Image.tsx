@@ -4,8 +4,8 @@ import styled from "styled-components";
 interface ImageProps {
   source: string;
   alt: string;
-  width?: string | number;
-  height?: string | number;
+  width?: string;
+  height?: string;
   orientation?: "left" | "center" | "right";
 }
 
