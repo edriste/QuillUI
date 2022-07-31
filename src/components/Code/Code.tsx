@@ -7,6 +7,7 @@ interface CodeProps extends ContainerProps {
   lineIndexColor?: Colors;
   lineIndexSeparatorColor?: Colors;
   codeLineColor?: Colors;
+  commentColor?: Colors;
   content: string;
 }
 
@@ -19,6 +20,7 @@ const Code: React.FC<CodeProps> = ({
   content,
   display = "block",
   codeLineColor = Colors.White,
+  commentColor = Colors.Gray8,
   lineIndexColor = Colors.Gray8,
   lineIndexSeparatorColor = Colors.Gray8,
   marginBottom,
@@ -109,13 +111,15 @@ const Code: React.FC<CodeProps> = ({
 
   const CodeLineContent = styled.span`
     flex: 0 0 calc(100% - ${codeLineIndexWidth + 10}px);
-    color: ${codeLineColor};
     box-sizing: border-box;
+    color: ${codeLineColor};
   `;
 
   const Pre = styled.pre`
     margin: 0;
   `;
+
+  console.log(codeArray);
 
   return (
     <CodeBox>
@@ -124,7 +128,14 @@ const Code: React.FC<CodeProps> = ({
           <CodeLineIndex>
             <Pre>{i + 1}</Pre>
           </CodeLineIndex>
-          <CodeLineContent>
+          <CodeLineContent
+            style={{
+              color:
+                codeLine.substring(0, 2) === "//"
+                  ? commentColor
+                  : codeLineColor,
+            }}
+          >
             <Pre>{codeLine}</Pre>
           </CodeLineContent>
         </CodeLine>

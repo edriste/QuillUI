@@ -46,6 +46,7 @@ function App() {
             content={`
               console.log(Hello World!);
 
+              // log the numbers 0 - 10
               for(let i = 0; i <= 10; i++) {
                 console.log(i);
               }
@@ -109,7 +110,7 @@ function App() {
           <Text type="subSubHeader" textAlign="left">
             Link
           </Text>
-          <Link source="https://github.com/edriste/QuillUI">
+          <Link source="https://github.com/edriste/QuillUI" marginLeft="15px">
             This is a Link
           </Link>
           <Text type="subSubHeader" textAlign="left">
@@ -134,6 +135,7 @@ function App() {
             borderWidth="1px"
             borderColor={Colors.Gray6}
             orientation="left"
+            marginLeft="15px"
           >
             This is a container
           </Container>
