@@ -4,19 +4,22 @@ import { Colors } from "../../enums/enums";
 import { ContainerProps } from "../Container/Container";
 
 interface CodeProps extends ContainerProps {
+  content: string;
   lineIndexColor?: Colors;
   lineIndexSeparatorColor?: Colors;
   codeLineColor?: Colors;
   commentColor?: Colors;
-  content: string;
+  scrollBarTrackColor?: Colors;
+  scrollBarThumbColor?: Colors;
+  scrollBarThumbHoverColor?: Colors;
 }
 
 const Code: React.FC<CodeProps> = ({
   backgroundColor = Colors.Gray3,
-  borderColor,
+  borderColor = Colors.Gray3,
   borderRadius = "8px",
-  borderStyle,
-  borderWidth,
+  borderStyle = "solid",
+  borderWidth = "2px",
   content,
   display = "block",
   codeLineColor = Colors.White,
@@ -28,10 +31,13 @@ const Code: React.FC<CodeProps> = ({
   marginRight,
   marginTop,
   orientation = "left",
-  paddingBottom = "10px",
-  paddingLeft = "10px",
-  paddingRight = "10px",
-  paddingTop = "10px",
+  paddingBottom = "0",
+  paddingLeft = "8px",
+  paddingRight = "8px",
+  paddingTop = "8px",
+  scrollBarTrackColor = Colors.Gray6,
+  scrollBarThumbColor = Colors.Gray1,
+  scrollBarThumbHoverColor = Colors.Gray2,
   width,
 }) => {
   let initialIndent = 0;
@@ -92,25 +98,46 @@ const Code: React.FC<CodeProps> = ({
     box-sizing: border-box;
   `;
 
-  const CodeLine = styled.div`
+  const CodeContentWrapper = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
     gap: 0px 10px;
-    box-sizing: border-box;
   `;
 
-  const CodeLineIndex = styled.span`
+  const IndexCol = styled.div`
     flex: 0 0 ${codeLineIndexWidth}px;
+  `;
+
+  const ContentCol = styled.div`
+    padding-bottom: 8px;
+    flex: 0 0 calc(100% - ${codeLineIndexWidth + 10}px);
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: ${scrollBarTrackColor};
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${scrollBarThumbColor};
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: ${scrollBarThumbHoverColor};
+    }
+  `;
+
+  const CodeLineIndex = styled.div`
     color: ${lineIndexColor};
     border-right: 1px solid ${lineIndexSeparatorColor};
     box-sizing: border-box;
   `;
 
   const CodeLineContent = styled.span`
-    flex: 0 0 calc(100% - ${codeLineIndexWidth + 10}px);
     box-sizing: border-box;
     color: ${codeLineColor};
   `;
@@ -123,23 +150,29 @@ const Code: React.FC<CodeProps> = ({
 
   return (
     <CodeBox>
-      {codeArray?.map((codeLine, i) => (
-        <CodeLine>
-          <CodeLineIndex>
-            <Pre>{i + 1}</Pre>
-          </CodeLineIndex>
-          <CodeLineContent
-            style={{
-              color:
-                codeLine.substring(0, 2) === "//"
-                  ? commentColor
-                  : codeLineColor,
-            }}
-          >
-            <Pre>{codeLine}</Pre>
-          </CodeLineContent>
-        </CodeLine>
-      ))}
+      <CodeContentWrapper>
+        <IndexCol>
+          {codeArray?.map((codeLine, i) => (
+            <CodeLineIndex>
+              <Pre>{i}</Pre>
+            </CodeLineIndex>
+          ))}
+        </IndexCol>
+        <ContentCol>
+          {codeArray?.map((codeLine) => (
+            <CodeLineContent
+              style={{
+                color:
+                  codeLine.substring(0, 2) === "//"
+                    ? commentColor
+                    : codeLineColor,
+              }}
+            >
+              <Pre>{codeLine === "" ? "\n" : codeLine}</Pre>
+            </CodeLineContent>
+          ))}
+        </ContentCol>
+      </CodeContentWrapper>
     </CodeBox>
   );
 };
