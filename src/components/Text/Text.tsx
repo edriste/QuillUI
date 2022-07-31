@@ -1,8 +1,9 @@
-import React, { Children } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Colors, FontSizes } from "../../enums/enums";
+import { ContainerProps } from "../Container/Container";
 
-interface TextProps {
+interface TextProps extends ContainerProps {
   color?: Colors;
   fontSize?: FontSizes;
   horizontalLayer?: number;
@@ -13,6 +14,23 @@ interface TextProps {
 }
 
 const Text: React.FC<TextProps> = ({
+  display = "block",
+  backgroundColor,
+  borderColor,
+  borderRadius = "8px",
+  borderStyle,
+  borderWidth,
+  height,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  marginTop,
+  orientation = "left",
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingTop,
+  width,
   color = Colors.Gray3,
   fontSize,
   textAlign = "left",
@@ -21,7 +39,30 @@ const Text: React.FC<TextProps> = ({
   weight,
   children,
 }) => {
+  const left =
+  orientation === "center" ? 50 : orientation === "right" ? 100 : 0;
+
   const Paragraph = styled.p`
+    display: ${display};
+    position: relative;
+    background-color: ${backgroundColor};
+    border-color: ${borderColor};
+    border-radius: ${borderRadius};
+    border-style: ${borderStyle};
+    border-width: ${borderWidth};
+    height: ${height};
+    margin-bottom: ${marginBottom};
+    margin-left: ${marginLeft};
+    margin-right: ${marginRight};
+    margin-top: ${marginTop};
+    padding-bottom: ${paddingBottom};
+    padding-left: ${paddingLeft};
+    padding-right: ${paddingRight};
+    padding-top: ${paddingTop};
+    width: ${width};
+    left: ${left}%;
+    transform: translateX(-${left}%);
+    box-sizing: border-box;
     color: ${color};
     font-family: "Roboto", sans-serif;
     font-weight: ${weight ?? "normal"};
