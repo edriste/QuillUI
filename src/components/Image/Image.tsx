@@ -14,7 +14,7 @@ const Image: React.FC<ImageProps> = ({
   borderRadius,
   borderStyle,
   borderWidth = "1px",
-  display,
+  display = "block",
   height,
   marginBottom,
   marginLeft,

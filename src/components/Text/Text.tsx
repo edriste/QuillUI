@@ -13,31 +13,28 @@ interface TextProps {
 }
 
 const Text: React.FC<TextProps> = ({
-  color,
+  color = Colors.Gray3,
   fontSize,
-  horizontalLayer = 0,
-  textAlign,
+  textAlign = "left",
   transform,
   type,
   weight,
   children,
 }) => {
   const Paragraph = styled.p`
-    color: ${color ?? Colors.Gray3};
+    color: ${color};
     font-family: "Roboto", sans-serif;
     font-weight: ${weight ?? "normal"};
     font-size: ${fontSize ?? "13px"};
-    text-align: ${textAlign ?? "left"};
+    text-align: ${textAlign};
     text-transform: ${transform ?? "none"};
-    margin-left: ${horizontalLayer}em;
   `;
 
   const Header = styled(Paragraph)`
     font-family: "Rockwell Nova", sans-serif;
-    text-align: center;
+    text-align: ${textAlign};
     font-size: ${fontSize ?? FontSizes.ExtraLarge};
     text-transform: ${transform ?? "uppercase"};
-    text-align: ${textAlign ?? "center"};
   `;
 
   const SubHeader = styled(Header)`

@@ -13,8 +13,8 @@ function App() {
         height="240px"
         orientation="center"
       />
-      <Container width="1080px" marginBottom="20px">
-        <Text type="header">The simple black &amp; white UI collection</Text>
+      <Container width="1080px" marginBottom="20px" orientation="center">
+        <Text type="header" textAlign="center">The simple black &amp; white UI collection</Text>
         <Text fontSize={FontSizes.Large} textAlign="center">
           Color Schemes are so tedious. Why even bother?<br></br>Why not just
           something as simple as ink on paper?<br></br>QuillUI is the perfect
@@ -30,6 +30,9 @@ function App() {
         borderStyle="solid"
         borderWidth="1px"
         borderColor={Colors.Gray6}
+        paddingLeft="20px"
+        paddingRight="20px"
+        orientation="center"
       >
         <Text type="header">Components</Text>
         <Text type="subHeader" textAlign="left">
@@ -43,12 +46,13 @@ function App() {
             content={`
               console.log(Hello World!);
 
-              for(let i = 0; i <= 10; i++){
+              for(let i = 0; i <= 10; i++) {
                 console.log(i);
               }
 
               console.log("Done!")
             `}
+            marginLeft="15px"
           />
           <Text type="subSubHeader" textAlign="left">
             Image
@@ -58,6 +62,11 @@ function App() {
             alt="QuillUI"
             height="120px"
             orientation="left"
+            marginLeft="15px"
+            borderStyle="solid"
+            borderColor={Colors.Gray6}
+            borderRadius="8px"
+            borderWidth="1px"
           />
           <Text type="subSubHeader" textAlign="left">
             List

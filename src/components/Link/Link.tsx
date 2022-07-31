@@ -8,13 +8,18 @@ interface LinkProps {
   underline?: boolean;
 }
 
-const Link: React.FC<LinkProps> = ({ source, color, underline, children }) => {
+const Link: React.FC<LinkProps> = ({
+  source,
+  color = Colors.Black,
+  underline = true,
+  children,
+}) => {
   const Anchor = styled.a`
-    tect.decoration: none;
-    color: ${color ?? Colors.Black};
+    text-decoration: none;
+    color: ${color};
     font-family: "Roboto", sans-serif;
     font-weight: bold;
-    border-bottom: ${underline ? "1px solid " + color ?? Colors.Black : "none"};
+    border-bottom: ${underline ? "1px solid " + color : "none"};
 
     &:hover {
       opacity: 0.75;

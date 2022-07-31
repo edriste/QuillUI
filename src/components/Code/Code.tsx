@@ -11,21 +11,21 @@ interface CodeProps extends ContainerProps {
 }
 
 const Code: React.FC<CodeProps> = ({
-  backgroundColor = Colors.Gray2,
+  backgroundColor = Colors.Gray3,
   borderColor,
   borderRadius = "8px",
   borderStyle,
   borderWidth,
   content,
-  display,
+  display = "block",
   codeLineColor = Colors.White,
-  lineIndexColor = Colors.Gray6,
-  lineIndexSeparatorColor = Colors.Gray6,
+  lineIndexColor = Colors.Gray8,
+  lineIndexSeparatorColor = Colors.Gray8,
   marginBottom,
   marginLeft,
   marginRight,
   marginTop,
-  orientation = "center",
+  orientation = "left",
   paddingBottom = "10px",
   paddingLeft = "10px",
   paddingRight = "10px",
@@ -87,6 +87,7 @@ const Code: React.FC<CodeProps> = ({
     margin-top: ${marginTop};
     left: ${left}%;
     transform: translateX(-${left}%);
+    box-sizing: border-box;
   `;
 
   const CodeLine = styled.div`
@@ -96,17 +97,20 @@ const Code: React.FC<CodeProps> = ({
     align-items: stretch;
     align-content: flex-start;
     gap: 0px 10px;
+    box-sizing: border-box;
   `;
 
   const CodeLineIndex = styled.span`
     flex: 0 0 ${codeLineIndexWidth}px;
     color: ${lineIndexColor};
     border-right: 1px solid ${lineIndexSeparatorColor};
+    box-sizing: border-box;
   `;
 
   const CodeLineContent = styled.span`
-    flex: 0 0 calc(100% - ${codeLineIndexWidth + 11}px);
+    flex: 0 0 calc(100% - ${codeLineIndexWidth + 10}px);
     color: ${codeLineColor};
+    box-sizing: border-box;
   `;
 
   const Pre = styled.pre`

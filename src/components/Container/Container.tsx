@@ -3,7 +3,30 @@ import styled from "styled-components";
 import { Colors } from "../../enums/enums";
 
 export interface ContainerProps {
-  display?: string;
+  display?:
+    | "inline"
+    | "block"
+    | "contents"
+    | "flex"
+    | "grid"
+    | "inline-block"
+    | "inline-flex"
+    | "inline-grid"
+    | "inline-table"
+    | "list-item"
+    | "run-in"
+    | "table"
+    | "table-caption"
+    | "table-column-group"
+    | "table-header-group"
+    | "table-footer-group"
+    | "table-row-group"
+    | "table-cell"
+    | "table-column"
+    | "table-row"
+    | "none"
+    | "initial"
+    | "inherit";
   width?: string;
   height?: string;
   borderStyle?:
@@ -34,7 +57,7 @@ export interface ContainerProps {
 }
 
 const Container: React.FC<ContainerProps> = ({
-  display,
+  display = "block",
   backgroundColor,
   borderColor,
   borderRadius = "8px",
@@ -46,7 +69,7 @@ const Container: React.FC<ContainerProps> = ({
   marginLeft,
   marginRight,
   marginTop,
-  orientation = "center",
+  orientation = "left",
   paddingBottom = "10px",
   paddingLeft = "10px",
   paddingRight = "10px",
@@ -76,6 +99,7 @@ const Container: React.FC<ContainerProps> = ({
     width: ${width};
     left: ${left}%;
     transform: translateX(-${left}%);
+    box-sizing: border-box;
   `;
 
   return <ContainerDiv>{children}</ContainerDiv>;
