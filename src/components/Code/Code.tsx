@@ -154,7 +154,7 @@ const Code: React.FC<CodeProps> = ({
         <IndexCol>
           {codeArray?.map((codeLine, i) => (
             <CodeLineIndex>
-              <Pre>{i}</Pre>
+              <Pre>{i+1}</Pre>
             </CodeLineIndex>
           ))}
         </IndexCol>
