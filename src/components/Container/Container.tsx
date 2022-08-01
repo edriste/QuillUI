@@ -44,6 +44,8 @@ export interface ContainerProps {
   backgroundColor?: Colors;
   borderWidth?: string;
   borderRadius?: string;
+  boxShadow?: boolean;
+  boxShadowColor?: Colors;
   padding?: string;
   marginBottom?: string;
   marginLeft?: string;
@@ -63,6 +65,8 @@ const Container: React.FC<ContainerProps> = ({
   borderRadius = "6px",
   borderStyle,
   borderWidth = "1px",
+  boxShadow = false,
+  boxShadowColor = Colors.Black,
   children,
   height,
   marginBottom,
@@ -100,6 +104,7 @@ const Container: React.FC<ContainerProps> = ({
     left: ${left}%;
     transform: translateX(-${left}%);
     box-sizing: border-box;
+    box-shadow: ${boxShadow ? `0px 0px 10px 1px ${boxShadowColor}` : "none"} ;
   `;
 
   return <ContainerDiv>{children}</ContainerDiv>;

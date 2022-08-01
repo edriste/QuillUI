@@ -14,7 +14,9 @@ function App() {
         orientation="center"
       />
       <Container width="1080px" marginBottom="20px" orientation="center">
-        <Text type="header" textAlign="center">The simple black &amp; white UI collection</Text>
+        <Text type="header" textAlign="center">
+          The simple black &amp; white UI collection
+        </Text>
         <Text fontSize={FontSizes.Large} textAlign="center">
           Color Schemes are so tedious. Why even bother?<br></br>Why not just
           something as simple as ink on paper?<br></br>QuillUI is the perfect
@@ -27,9 +29,8 @@ function App() {
       </Container>
       <Container
         width="1080px"
-        borderStyle="solid"
-        borderWidth="1px"
-        borderColor={Colors.Gray6}
+        boxShadow={true}
+        boxShadowColor={Colors.Gray10}
         paddingLeft="20px"
         paddingRight="20px"
         orientation="center"
@@ -91,6 +92,17 @@ function App() {
           <Text type="subSubHeader" textAlign="left">
             Text
           </Text>
+          <Text marginLeft="15px" fontSize={FontSizes.Large}>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </Text>
         </Container>
         <Text type="subHeader" textAlign="left">
           Interactive Elements
@@ -99,7 +111,9 @@ function App() {
           <Text type="subSubHeader" textAlign="left">
             Button
           </Text>
-          <Button action={() => alert("Hello World!")} marginLeft="15px">Click me!</Button>
+          <Button action={() => alert("Hello World!")} marginLeft="15px">
+            Click me!
+          </Button>
           <Text type="subSubHeader" textAlign="left">
             Checkbox
           </Text>
