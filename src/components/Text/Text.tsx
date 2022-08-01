@@ -9,6 +9,7 @@ interface TextProps extends ContainerProps {
   fontWeight?: "normal" | "bold";
   horizontalLayer?: number;
   textAlign?: "left" | "center" | "right" | "justified";
+  textDecoration?: "overline" | "line-through" | "underline";
   transform?: "lowercase" | "normal" | "uppercase";
   type?: "header" | "subHeader" | "subSubHeader" | "normal";
 }
@@ -35,6 +36,7 @@ const Text: React.FC<TextProps> = ({
   fontSize,
   fontWeight,
   textAlign = "left",
+  textDecoration,
   transform,
   type,
   children,
@@ -68,6 +70,7 @@ const Text: React.FC<TextProps> = ({
     font-weight: ${fontWeight ?? "normal"};
     font-size: ${fontSize ?? FontSizes.Normal};
     text-align: ${textAlign};
+    text-decoration: ${textDecoration};
     text-transform: ${transform ?? "none"};
   `;
 
