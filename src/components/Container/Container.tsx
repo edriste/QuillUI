@@ -60,7 +60,7 @@ const Container: React.FC<ContainerProps> = ({
   display = "block",
   backgroundColor,
   borderColor,
-  borderRadius = "8px",
+  borderRadius = "6px",
   borderStyle,
   borderWidth = "1px",
   children,

@@ -17,7 +17,7 @@ interface CodeProps extends ContainerProps {
 const Code: React.FC<CodeProps> = ({
   backgroundColor = Colors.Gray3,
   borderColor = Colors.Gray3,
-  borderRadius = "8px",
+  borderRadius = "6px",
   borderStyle = "solid",
   borderWidth = "2px",
   content,
@@ -35,9 +35,9 @@ const Code: React.FC<CodeProps> = ({
   paddingLeft = "8px",
   paddingRight = "8px",
   paddingTop = "8px",
-  scrollBarTrackColor = Colors.Gray6,
-  scrollBarThumbColor = Colors.Gray1,
-  scrollBarThumbHoverColor = Colors.Gray2,
+  scrollBarTrackColor = Colors.Gray1,
+  scrollBarThumbColor = Colors.Gray6,
+  scrollBarThumbHoverColor = Colors.Gray8,
   width,
 }) => {
   let initialIndent = 0;
@@ -109,12 +109,15 @@ const Code: React.FC<CodeProps> = ({
 
   const IndexCol = styled.div`
     flex: 0 0 ${codeLineIndexWidth}px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   `;
 
   const ContentCol = styled.div`
-    padding-bottom: 8px;
     flex: 0 0 calc(100% - ${codeLineIndexWidth + 10}px);
     overflow-x: auto;
+    cursor: grab;
     &::-webkit-scrollbar {
       height: 6px;
     }
@@ -125,9 +128,14 @@ const Code: React.FC<CodeProps> = ({
     &::-webkit-scrollbar-thumb {
       background: ${scrollBarThumbColor};
       border-radius: 6px;
+      cursor: pointer;
     }
     &::-webkit-scrollbar-thumb:hover {
       background: ${scrollBarThumbHoverColor};
+      cursor: pointer;
+    }
+    &:active {
+      cursor: grabbing;
     }
   `;
 
@@ -137,9 +145,14 @@ const Code: React.FC<CodeProps> = ({
     box-sizing: border-box;
   `;
 
-  const CodeLineContent = styled.span`
+  const CodeLineContent = styled.div`
     box-sizing: border-box;
     color: ${codeLineColor};
+    cursor: text;
+  `;
+
+  const LastCodeLineContent = styled(CodeLineContent)`
+    padding-bottom: 8px;
   `;
 
   const Pre = styled.pre`
@@ -154,23 +167,36 @@ const Code: React.FC<CodeProps> = ({
         <IndexCol>
           {codeArray?.map((codeLine, i) => (
             <CodeLineIndex>
-              <Pre>{i+1}</Pre>
+              <Pre>{i + 1}</Pre>
             </CodeLineIndex>
           ))}
         </IndexCol>
         <ContentCol>
-          {codeArray?.map((codeLine) => (
-            <CodeLineContent
-              style={{
-                color:
-                  codeLine.substring(0, 2) === "//"
-                    ? commentColor
-                    : codeLineColor,
-              }}
-            >
-              <Pre>{codeLine === "" ? "\n" : codeLine}</Pre>
-            </CodeLineContent>
-          ))}
+          {codeArray?.map((codeLine, i) =>
+            i === codeArray.length - 1 ? (
+              <LastCodeLineContent
+                style={{
+                  color:
+                    codeLine.substring(0, 2) === "//"
+                      ? commentColor
+                      : codeLineColor,
+                }}
+              >
+                <Pre>{codeLine === "" ? "\n" : codeLine}</Pre>
+              </LastCodeLineContent>
+            ) : (
+              <CodeLineContent
+                style={{
+                  color:
+                    codeLine.substring(0, 2) === "//"
+                      ? commentColor
+                      : codeLineColor,
+                }}
+              >
+                <Pre>{codeLine === "" ? "\n" : codeLine}</Pre>
+              </CodeLineContent>
+            )
+          )}
         </ContentCol>
       </CodeContentWrapper>
     </CodeBox>

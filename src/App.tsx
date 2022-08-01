@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import quillUIIcon from "./assets/icons/Quill.svg";
-import { Image, Text, Link, Code, Container } from "./components";
+import { Image, Text, Link, Code, Container, Button } from "./components";
 import { Colors, FontSizes } from "./enums/enums";
 
 function App() {
@@ -68,7 +68,6 @@ function App() {
             marginLeft="15px"
             borderStyle="solid"
             borderColor={Colors.Gray6}
-            borderRadius="8px"
             borderWidth="1px"
           />
           <Text type="subSubHeader" textAlign="left">
@@ -100,6 +99,7 @@ function App() {
           <Text type="subSubHeader" textAlign="left">
             Button
           </Text>
+          <Button action={() => alert("Hello World!")} marginLeft="15px">Click me!</Button>
           <Text type="subSubHeader" textAlign="left">
             Checkbox
           </Text>
