@@ -122,16 +122,17 @@ const Code: React.FC<CodeProps> = ({
       height: 6px;
     }
     &::-webkit-scrollbar-track {
-      background: ${scrollBarTrackColor};
+      background-color: ${scrollBarTrackColor};
       border-radius: 6px;
     }
     &::-webkit-scrollbar-thumb {
-      background: ${scrollBarThumbColor};
+      background-color: ${scrollBarThumbColor};
       border-radius: 6px;
       cursor: pointer;
     }
     &::-webkit-scrollbar-thumb:hover {
-      background: ${scrollBarThumbHoverColor};
+      background-color: ${scrollBarThumbHoverColor};
+      transition: background-color 200ms;
       cursor: pointer;
     }
     &:active {

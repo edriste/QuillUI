@@ -6,6 +6,7 @@ import { ContainerProps } from "../Container/Container";
 interface LinkProps extends ContainerProps {
   source: string;
   color?: Colors;
+  hoverColor?: Colors;
   underline?: boolean;
 }
 
@@ -17,6 +18,7 @@ const Link: React.FC<LinkProps> = ({
   borderStyle,
   borderWidth,
   height,
+  hoverColor = Colors.Gray7,
   marginBottom,
   marginLeft,
   marginRight,
@@ -28,7 +30,7 @@ const Link: React.FC<LinkProps> = ({
   paddingTop,
   width,
   source,
-  color = Colors.Black,
+  color = Colors.Gray3,
   underline = true,
   children,
 }) => {
@@ -63,8 +65,9 @@ const Link: React.FC<LinkProps> = ({
     border-bottom: ${underline ? "1px solid " + color : "none"};
 
     &:hover {
-      opacity: 0.75;
-      transition: opacity 200ms;
+      color: ${hoverColor};
+      border-color: ${hoverColor};
+      transition: color 200ms, border-color 200ms;
     }
   `;
 

@@ -4,7 +4,7 @@ import { Colors, FontSizes } from "../../enums/enums";
 import { ContainerProps } from "../Container/Container";
 
 export interface ButtonProps extends ContainerProps {
-  action: () => void;
+  action: () => any;
   color?: Colors;
   fontSize?: FontSizes;
   fontWeight?: "normal" | "bold";
@@ -71,6 +71,7 @@ const Button: React.FC<ButtonProps> = ({
     &:hover {
         background-color: ${hoverBackgroundColor};
         color: ${hoverColor};
+        transition: color 200ms, background-color 200ms;
     }
   `;
 
